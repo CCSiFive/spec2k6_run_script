@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# modify following settings
+gen_script="/scratch/evanl/fusdk/sifive-fpga/build/tmp-glibc/deploy/images/sifive-fpga/tmp/spec2006-quick-eval-kit/lib/gen_specrun.py"
+spec_base="/scratch/evanl/fusdk/sifive-fpga/build/tmp-glibc/deploy/images/sifive-fpga/tmp/spec2006-quick-eval-kit/spec2006/benchspec/CPU2006"
+# end of settings
+
+cd $spec_base
+ls -d */ |sed "s#/##g"|xargs -i bash -c "$gen_script --speccmd {}/run/run_base_ref_riscv_quick-eval.0000/speccmds.cmd -o /work/evanl/spec2006_pkg/fpga_wic_pkg/run_script/{}.sh --platform fpga --dataset ref"
